@@ -34,11 +34,11 @@ const props = defineProps({
     required: true
   }
 })
-
+console.log(props.data);
 const translate = computed(() => {
   switch (props.data.blockCode) {
     case 'HOMEPAGE_BLOCK_OLD_DRAGON_BALL':
-      return props.data.creatives[0].resources.map((item) => {
+      return props.data.creatives[0].resources.map((item) => { 
         return {
           name: item.uiElement.mainTitle.title,
           img: item.uiElement.image.imageUrl
