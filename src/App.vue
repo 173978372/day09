@@ -1,4 +1,5 @@
 <template>
+  <TopPage></TopPage>
   <HomePage></HomePage>
   <Bottom></Bottom>
   <!-- <div ref="elref" class="w-[100vw] overflow-hidden">
@@ -15,6 +16,7 @@
   </BetterScoll> -->
 </template>
 <script setup>
+import TopPage from './views/TopPage.vue';
 import HomePage from './views/HomePage.vue'
 import Bottom from './views/Bottom.vue'
 // import { ref, onMounted } from 'vue'
