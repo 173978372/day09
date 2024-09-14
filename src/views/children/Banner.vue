@@ -19,5 +19,4 @@ const props = defineProps({
     Required: true
   }
 })
-console.log(props.data)
 </script>
