@@ -8,7 +8,7 @@
 <script setup>
 import BScroll from '@better-scroll/core'
 import { ref, onMounted, defineProps, onBeforeUnmount } from 'vue'
-const werper = ref(null)
+const werper = ref('null')
 let bs = null
 const props = defineProps({
   type: {
