@@ -1,6 +1,6 @@
 <template>
-  <div ref="werper" class="overflow-hidden">
-    <div class="">
+  <div ref="werper" :class="`${props.type.scrollX ? 'flex' : ''} mt-[6px] overflow-hidden`">
+    <div :class="`${props.type.scrollX ? 'flex flex-1' : ''}`">
       <slot />
     </div>
   </div>
@@ -13,7 +13,7 @@ let bs = null
 const props = defineProps({
   type: {
     type: Object,
-    default: () => {
+    default() {
       return {
         scrollX: false,
         scrollY: true
@@ -21,11 +21,7 @@ const props = defineProps({
     }
   }
 })
-const app = () => {
-  if (screenX) {
-    return
-  }
-}
+
 onMounted(() => {
   bs = new BScroll(werper.value, props.type)
 })

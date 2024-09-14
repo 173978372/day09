@@ -18,7 +18,7 @@ const blockTypeMap = {
   HOMEPAGE_BLOCK_HOT_TOPIC: '',
   HOMEPAGE_MUSIC_CALENDAR: '',
   HOMEPAGE_MUSIC_MLOG: '',
-  HOMEPAGE_BLOCK_MGC_PLAYLIST: '',
+  HOMEPAGE_BLOCK_MGC_PLAYLIST: '111',
   HOMEPAGE_BLOCK_OFFICIAL_PLAYLIST: '',
   HOMEPAGE_VOICELIST_RCMD: '',
   HOMEPAGE_PODCAST24: '',
@@ -34,7 +34,7 @@ const props = defineProps({
     required: true
   }
 })
-
+console.log(props.data)
 const translate = computed(() => {
   switch (props.data.blockCode) {
     case 'HOMEPAGE_BLOCK_OLD_DRAGON_BALL':
@@ -46,15 +46,12 @@ const translate = computed(() => {
       })
 
     case 'HOMEPAGE_BANNER':
-      console.log(props.data.extInfo.banners)
-
       return props.data.extInfo.banners.map((item) => {
         return {
           img: item.pic
         }
       })
     case 'HOMEPAGE_BLOCK_PLAYLIST_RCMD':
-      console.log(props.data.creatives)
       return {
         name: props.data.uiElement.subTitle.title,
         children: props.data.creatives.map((item) => {
