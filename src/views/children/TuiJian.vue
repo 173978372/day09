@@ -1,6 +1,7 @@
 <template>
   <Wraper :title="props.data.name"
     ><BetterScoll
+      :dep="true"
       :type="{
         scrollX: true,
         scrollY: false

@@ -1,5 +1,6 @@
 <template>
   <BetterScoll
+    :dep="true"
     :type="{
       scrollX: true,
       scrollY: false

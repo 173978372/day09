@@ -7,10 +7,13 @@
 </template>
 <script setup>
 import BScroll from '@better-scroll/core'
-import { ref, onMounted, defineProps, onBeforeUnmount } from 'vue'
+import { ref, onMounted, defineProps, onBeforeUnmount, watchEffect, nextTick } from 'vue'
 const werper = ref('null')
 let bs = null
 const props = defineProps({
+  dep: {
+    required: true
+  },
   type: {
     type: Object,
     default() {
@@ -24,6 +27,10 @@ const props = defineProps({
 
 onMounted(() => {
   bs = new BScroll(werper.value, props.type)
+})
+watchEffect(() => {
+  console.log(props.dep)
+  nextTick(() => bs?.refresh())
 })
 onBeforeUnmount(() => bs.destroy())
 </script>
