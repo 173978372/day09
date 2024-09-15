@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-[590px]">
+  <div class="fixed top-[590px] bg-white">
     <div class="flex text-white">
       <div class="flex flex-col items-center w-[20vw]">
         <Icon

@@ -9,6 +9,8 @@ import { computed, defineProps } from 'vue'
 import Menu from '@/views/children/Menu.vue'
 import Banner from './Banner.vue'
 import PlayList from './PlayList.vue'
+import TuiJian from './TuiJian.vue'
+import Official from './Official.vue'
 const blockTypeMap = {
   HOMEPAGE_BANNER: Banner,
   HOMEPAGE_BLOCK_OLD_DRAGON_BALL: Menu,
@@ -18,8 +20,8 @@ const blockTypeMap = {
   HOMEPAGE_BLOCK_HOT_TOPIC: '',
   HOMEPAGE_MUSIC_CALENDAR: '',
   HOMEPAGE_MUSIC_MLOG: '',
-  HOMEPAGE_BLOCK_MGC_PLAYLIST: '111',
-  HOMEPAGE_BLOCK_OFFICIAL_PLAYLIST: '',
+  HOMEPAGE_BLOCK_MGC_PLAYLIST: TuiJian,
+  HOMEPAGE_BLOCK_OFFICIAL_PLAYLIST: Official,
   HOMEPAGE_VOICELIST_RCMD: '',
   HOMEPAGE_PODCAST24: '',
   HOMEPAGE_BLOCK_YUNCUN_PRODUCED: '',
@@ -62,6 +64,33 @@ const translate = computed(() => {
           }
         })
       }
+    case 'HOMEPAGE_BLOCK_MGC_PLAYLIST': {
+      // console.log(props.data)
+      return {
+        name: props.data.uiElement.subTitle.title,
+        children: props.data.creatives.map((item) => {
+          return {
+            id: item.resources[0].resourceId,
+            playCount: item.resources[0].resourceExtInfo.playCount,
+            imageUrl: item.resources[0].uiElement.image.imageUrl,
+            title: item.resources[0].uiElement.mainTitle.title
+          }
+        })
+      }
+    }
+    case 'HOMEPAGE_BLOCK_OFFICIAL_PLAYLIST': {
+      return {
+        name: props.data.uiElement.subTitle.title,
+        children: props.data.creatives.map((item) => {
+          return {
+            id: item.resources[0].resourceId,
+            playCount: item.resources[0].resourceExtInfo.playCount,
+            imageUrl: item.resources[0].uiElement.image.imageUrl,
+            title: item.resources[0].uiElement.mainTitle.title
+          }
+        })
+      }
+    }
     default:
       return []
   }

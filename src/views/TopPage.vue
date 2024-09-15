@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="sticky top-0 z-40 bg-white">
     <div class="flex position-relative">
       <div class="flex flex-col items-center w-[20vw]">
         <Icon icon="oui:editor-unordered-list" style="color: black" class="w-[9vw] h-[9vw]" />
-        <Icon icon="ph:microphone"  style="color: black" class="w-[9vw] h-[9vw] absolute right-4"/>
+        <Icon icon="ph:microphone" style="color: black" class="w-[9vw] h-[9vw] absolute right-4" />
       </div>
-      <form class="relative flex w-[20vw] max-w-xs " action="/search" method="GET">
+      <form class="relative flex w-[20vw] max-w-xs" action="/search" method="GET">
         <input
           type="search"
           class="flex-grow rounded-l-md appearance-none rounded shadow"

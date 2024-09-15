@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between">
+  <div class="flex justify-between mt-[10px] ml-[10px]">
     <div class="text-[#3e4659] font-bold">{{ props.title }}</div>
     <Icon icon="mingcute:more-2-line" class="text-[5.761vw] text-[#9195a1]" />
   </div>

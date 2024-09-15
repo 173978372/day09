@@ -10,7 +10,7 @@
     >
       <div v-for="item in props.data.children" :key="item.id" class="w-[20vw] mx-[10px] relative">
         <Curated :item="item">
-          <img :src="item.imageUrl" alt="" class="w-[80px]" />
+          <img :src="item.imageUrl" alt="" class="w-[80px] h-[80px]" />
           <span class="absolute right-0 top-[0] text-[#fff] text-[10px]">{{
             getMath(item.playCount)
           }}</span>
