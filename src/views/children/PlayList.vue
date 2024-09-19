@@ -11,7 +11,7 @@
       <div
         v-for="item in props.data.children"
         :key="item.id"
-        @click="fn(item)"
+        @click="fn(item.id)"
         class="w-[20vw] mx-[10px] relative"
       >
         <Curated :item="item">
@@ -24,20 +24,27 @@
       </div>
     </BetterScoll>
   </Wraper>
+  <gequ :data="ab"></gequ>
 </template>
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, ref } from 'vue'
+import { getSong } from '@/axios'
 import BetterScoll from '@/components/BetterScoll.vue'
 import Wraper from '@/components/Wraper.vue'
 import Curated from '@/components/Curated.vue'
+import gequ from '@/components/gequ.vue'
 const props = defineProps({
   data: {
     type: Object,
     required: true
   }
 })
+
 let fn = (a) => {
-  console.log(a)
+  let ab = ref('[]')
+  getSong(a).then((res) => {
+    ab.value = res.data.song
+  })
 }
 let getMath = (number) => {
   let result = ''
