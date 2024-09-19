@@ -27,7 +27,6 @@
 </template>
 <script setup>
 import { defineProps, ref } from 'vue'
-import { getSong } from '@/axios'
 import BetterScoll from '@/components/BetterScoll.vue'
 import Wraper from '@/components/Wraper.vue'
 import Curated from '@/components/Curated.vue'

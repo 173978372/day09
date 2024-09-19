@@ -4,10 +4,16 @@
       :dep="true"
       :type="{
         scrollX: true,
-        scrollY: false
+        scrollY: false,
+        click: ture
       }"
     >
-      <div v-for="item in props.data.children" :key="item.id" class="w-[20vw] mx-[10px] relative">
+      <div
+        v-for="item in props.data.children"
+        :key="item.id"
+        @click="fn(item.id)"
+        class="w-[20vw] mx-[10px] relative"
+      >
         <Curated :item="item">
           <img :src="item.imageUrl" alt="" class="w-[80px] h-[80px]" />
           <span class="absolute right-0 top-[0] text-[#fff] text-[10px]">{{
@@ -24,12 +30,19 @@ import { defineProps } from 'vue'
 import BetterScoll from '@/components/BetterScoll.vue'
 import Wraper from '@/components/Wraper.vue'
 import Curated from '@/components/Curated.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 const props = defineProps({
   data: {
     type: Array,
     required: true
   }
 })
+let fn = (a) => {
+  console.log(a)
+  router.push({ path: '/song', query: { a } })
+}
 let getMath = (number) => {
   let result = ''
   let a = number.toString()
