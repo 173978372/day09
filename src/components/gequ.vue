@@ -1,23 +1,40 @@
 <template>
   <div>
-    <button class="w-[80px] h-[80px]" @click="fn1">返回</button>
-    <div class="flex">
-      <div class="mr-1 relative">
-        <img :src="kdan.img" alt="" class="w-[30vw]" />
-        <span class="absolute right-0 top-[0] text-[#fff] text-[15px]">{{
-          getMath(kdan.playCount)
-        }}</span>
+    <div class="bg-gradient-to-b from-blue-500 to-light-blue-500">
+      <div class="flex justify-between mb-[10px] mt-[3px]">
+        <Icon
+          icon="ic:twotone-arrow-back-ios"
+          class="w-[7vw] h-[7vw]"
+          @click="fn1"
+          style="color: black"
+        />
+        <div>歌单</div>
+        <div class="flex">
+          <div>
+            <Icon icon="mingcute:search-line" class="mr-6 w-[7vw] h-[7vw]" style="color: black" />
+          </div>
+          <div><Icon icon="mingcute:more-2-line" class="w-[7vw] h-[7vw]" /></div>
+        </div>
       </div>
-      <div>
-        <div>{{ kdan.name }}</div>
-        <div class="flex justify-between w-[30vw] mt-3">
-          <div v-for="item in kdan.tags">
-            {{ item }}
+      <div class="flex">
+        <div class="mr-1 relative">
+          <img :src="kdan.img" alt="" class="w-[30vw]" />
+          <span class="absolute right-0 top-[0] text-[#fff] text-[15px]">{{
+            getMath(kdan.playCount)
+          }}</span>
+        </div>
+        <div>
+          <div>{{ kdan.name }}</div>
+          <div class="flex justify-between w-[30vw] mt-3">
+            <div v-for="item in kdan.tags">
+              {{ item }}
+            </div>
           </div>
         </div>
       </div>
+      <div class="line-clamp-1 mb-[10px] mt-[5px]">{{ kdan.description }}</div>
     </div>
-    <div class="line-clamp-1 mb-[10px] mt-[5px]">{{ kdan.description }}</div>
+
     <div class="mt-[10px]">
       <div class="flex flex-col space-y-7">
         <div v-for="(item, index) in song" class="flex">
