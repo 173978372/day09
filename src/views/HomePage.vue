@@ -1,5 +1,6 @@
 <template>
   <!-- <Menu :data="menu" /> -->
+
   <BlockType v-for="item in block" :key="item.blockCode" :data="item" class="mt-[10px]"></BlockType>
 </template>
 <script setup>

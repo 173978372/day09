@@ -1,13 +1,4 @@
 <template>
-  <div></div>
+  <div>12324</div>
 </template>
-<script setup>
-import { defineProps } from 'vue'
-const props = defineProps({
-  data: {
-    type: Array,
-    Required: true
-  }
-})
-console.log(props.data)
-</script>
+<script setup></script>

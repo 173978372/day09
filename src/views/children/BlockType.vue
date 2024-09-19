@@ -4,7 +4,6 @@
 
 <script setup>
 import { computed, defineProps } from 'vue'
-
 // import Menu from './Menu.vue'
 import Menu from '@/views/children/Menu.vue'
 import Banner from './Banner.vue'

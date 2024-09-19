@@ -24,7 +24,6 @@
       </div>
     </BetterScoll>
   </Wraper>
-  <gequ :data="ab"></gequ>
 </template>
 <script setup>
 import { defineProps, ref } from 'vue'
@@ -32,7 +31,9 @@ import { getSong } from '@/axios'
 import BetterScoll from '@/components/BetterScoll.vue'
 import Wraper from '@/components/Wraper.vue'
 import Curated from '@/components/Curated.vue'
-import gequ from '@/components/gequ.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 const props = defineProps({
   data: {
     type: Object,
@@ -41,10 +42,9 @@ const props = defineProps({
 })
 
 let fn = (a) => {
-  let ab = ref('[]')
-  getSong(a).then((res) => {
-    ab.value = res.data.song
-  })
+  const ab = a
+  console.log(a)
+  router.push('/song')
 }
 let getMath = (number) => {
   let result = ''
