@@ -11,7 +11,7 @@
       <div
         v-for="item in props.data.children"
         :key="item.id"
-        @click="fn(item)"
+        @click="fn(item.id)"
         class="w-[20vw] mx-[10px] relative"
       >
         <Curated :item="item">

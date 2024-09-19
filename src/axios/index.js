@@ -4,8 +4,15 @@ export const getSong = (id) => {
   return axios.get('https://wangyiyun-teal.vercel.app/playlist/track/all', {
     params: {
       id: id,
-      limit: 10,
+      limit: 50,
       offset: 1
+    }
+  })
+}
+export const getk = (id) => {
+  return axios.get('https://wangyiyun-teal.vercel.app/playlist/detail', {
+    params: {
+      id: id
     }
   })
 }
