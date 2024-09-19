@@ -24,13 +24,11 @@ const props = defineProps({
     }
   }
 })
-
 onMounted(() => {
   bs = new BScroll(werper.value, props.type)
 })
 watchEffect(() => {
-  console.log(props.dep)
-  nextTick(() => bs?.refresh())
+  nextTick(() => bs.refresh())
 })
 onBeforeUnmount(() => bs.destroy())
 </script>

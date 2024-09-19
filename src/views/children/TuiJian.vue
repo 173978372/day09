@@ -30,7 +30,6 @@ const props = defineProps({
     required: true
   }
 })
-console.log(props.data)
 let getMath = (number) => {
   let result = ''
   let a = number.toString()

@@ -11,6 +11,7 @@ const props = defineProps({
     required: true
   }
 })
+
 let getMath = (number) => {
   let result = ''
   let a = number.toString()

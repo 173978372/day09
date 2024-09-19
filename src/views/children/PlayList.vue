@@ -1,14 +1,19 @@
 <template>
-  <!-- <div>{{ props.data.name }}</div> -->
-
-  <Wraper :title="props.data.name"
-    ><BetterScoll
+  <Wraper :title="props.data.name">
+    <BetterScoll
       :type="{
         scrollX: true,
-        scrollY: false
+        scrollY: false,
+        click: true
       }"
+      :dep="props.data"
     >
-      <div v-for="item in props.data.children" :key="item.id" class="w-[20vw] mx-[10px] relative">
+      <div
+        v-for="item in props.data.children"
+        :key="item.id"
+        @click="fn(item)"
+        class="w-[20vw] mx-[10px] relative"
+      >
         <Curated :item="item">
           <img :src="item.imageUrl" alt="" class="w-[80px] h-[80px]" />
           <span class="absolute right-0 top-[0] text-[#fff] text-[10px]">{{
@@ -17,8 +22,8 @@
           <div class="text-[#3e4650] line-clamp-2 text-[12px]">{{ item.title }}</div>
         </Curated>
       </div>
-    </BetterScoll></Wraper
-  >
+    </BetterScoll>
+  </Wraper>
 </template>
 <script setup>
 import { defineProps } from 'vue'
@@ -27,10 +32,13 @@ import Wraper from '@/components/Wraper.vue'
 import Curated from '@/components/Curated.vue'
 const props = defineProps({
   data: {
-    type: Array,
+    type: Object,
     required: true
   }
 })
+let fn = (a) => {
+  console.log(a)
+}
 let getMath = (number) => {
   let result = ''
   let a = number.toString()
