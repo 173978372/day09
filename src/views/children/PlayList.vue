@@ -11,7 +11,7 @@
       <div
         v-for="item in props.data.children"
         :key="item.id"
-        @click="fn(item.id)"
+        @click="fn(item)"
         class="w-[20vw] mx-[10px] relative"
       >
         <Curated :item="item">
@@ -43,7 +43,6 @@ const props = defineProps({
 
 let fn = (a) => {
   console.log(a)
-
   router.push({ path: '/song', query: { a } })
 }
 let getMath = (number) => {
