@@ -9,3 +9,10 @@ export const getSong = (id) => {
     }
   })
 }
+export const getk = (id) => {
+  return axios.get('https://wangyiyun-teal.vercel.app/playlist/detail', {
+    params: {
+      id: id
+    }
+  })
+}
