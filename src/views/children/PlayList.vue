@@ -42,9 +42,9 @@ const props = defineProps({
 })
 
 let fn = (a) => {
-  const ab = a
   console.log(a)
-  router.push('/song')
+
+  router.push({ path: '/song', query: { a } })
 }
 let getMath = (number) => {
   let result = ''
