@@ -1,7 +1,8 @@
-import axios from 'axios'
-export const getDate = axios.get('https://wangyiyun-teal.vercel.app/homepage/block/page')
+// import axios from 'axios'
+import request from '@/axios/aaa'
+export const getDate = request.get('/homepage/block/page')
 export const getSong = (id) => {
-  return axios.get('https://wangyiyun-teal.vercel.app/playlist/track/all', {
+  return request.get('/playlist/track/all', {
     params: {
       id: id,
       limit: 50,
@@ -10,9 +11,14 @@ export const getSong = (id) => {
   })
 }
 export const getk = (id) => {
-  return axios.get('https://wangyiyun-teal.vercel.app/playlist/detail', {
+  return request.get('/playlist/detail', {
     params: {
       id: id
     }
+  })
+}
+export const login = (data) => {
+  return request.get('/login/cellphone', {
+    params: data
   })
 }

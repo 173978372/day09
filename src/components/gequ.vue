@@ -85,7 +85,6 @@ getk(searchKeyword.value).then((res) => {
 let getMath = (number) => {
   let result = ''
   let a = number.toString()
-
   if (a.length >= 5 && a.length < 6) {
     result = a[0] + '.' + a[1] + '万'
   }
