@@ -11,9 +11,11 @@ import Input from '@/components/Input.vue'
 import { ref } from 'vue'
 import localforage from 'localforage'
 import { login, getCode } from '@/axios'
-import { useRoute,useRouter } from 'vue-router'
-const router=useRouter()
-const route =useRoute()
+import { useRoute, useRouter } from 'vue-router'
+const router = useRouter()
+const route = useRoute()
+console.log(route.query.originPath)
+
 const useInfo = ref({
   phone: '',
   captcha: ''
@@ -32,6 +34,7 @@ const fn = () => {
           .setItem('useInfo', res.data)
           .then(() => {
             console.log('保存成功')
+            router.push(route.query.originPath)
           })
           .catch(() => {
             console.log('保存失败')

@@ -28,21 +28,18 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!to.fullPath.startsWith('/login') ) {
-    console.log(1);
+  if (!to.fullPath.startsWith('/login')) {
     localforage
       .getItem('useInfo')
       .then(({ cookie }) => {
         if (cookie) {
           next()
         } else {
-         
-          next('/login?a=1')
+          next(`/login?originPath=${to.fullPath}`)
         }
       })
       .catch(() => {
-    
-        next('/login?b=2')
+        next(`/login?originPath=${to.fullPath}`)
       })
   } else {
     next()
