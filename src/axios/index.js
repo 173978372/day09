@@ -22,3 +22,13 @@ export const login = (data) => {
     params: data
   })
 }
+export const getCode = (data) => {
+  return request.get('/captcha/sent', {
+    params: {
+      phone: data
+    }
+  })
+}
+export const getStatus = () => {
+  return request.get('/user/account')
+}

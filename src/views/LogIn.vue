@@ -1,19 +1,25 @@
 <template>
   <div>
     <Input placeholder="手机号" v-model:value="useInfo.phone" /><br />
-    <Input placeholder="密码" v-model:value="useInfo.password" type="password" /><br />
+    <Input placeholder="验证码" v-model:value="useInfo.captcha" type="password" /><br />
   </div>
+  <button @click="fn1">发送验证码</button><br />
   <button @click="fn">登录</button>
 </template>
 <script setup>
 import Input from '@/components/Input.vue'
 import { ref } from 'vue'
 import localforage from 'localforage'
-import { login } from '@/axios'
+import { login, getCode } from '@/axios'
 const useInfo = ref({
   phone: '',
-  password: ''
+  captcha: ''
 })
+const fn1 = () => {
+  getCode(useInfo.value.phone).then((res) => {
+    console.log(res)
+  })
+}
 const fn = () => {
   login(useInfo.value)
     .then((res) => {
