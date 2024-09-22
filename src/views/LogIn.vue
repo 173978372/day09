@@ -11,6 +11,9 @@ import Input from '@/components/Input.vue'
 import { ref } from 'vue'
 import localforage from 'localforage'
 import { login, getCode } from '@/axios'
+import { useRoute,useRouter } from 'vue-router'
+const router=useRouter()
+const route =useRoute()
 const useInfo = ref({
   phone: '',
   captcha: ''
