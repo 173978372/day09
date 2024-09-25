@@ -83,7 +83,7 @@ watch(result, () => {
 watch(res, async () => {
   const [error] = await to(localforage.setItem('useInfo', res.value.data))
   if (error) return showToast('')
-  await localforage.getItem('useInfo').then((res) => {
+  localforage.getItem('useInfo').then((res) => {
     XinxiStore.page(res.account.id)
   })
   return router.replace(route.query.originPath)
