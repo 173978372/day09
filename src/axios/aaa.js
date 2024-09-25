@@ -9,9 +9,8 @@ const http = axios.create({
 http.interceptors.request.use(async (config) => {
   const useInfo = await localforage.getItem('useInfo')
   const qw = {}
-  if (useInfo ?.cookie) qw.cookie=useInfo.cookie
-  // config.params=Object.assign(config.params||{},qw)
-config.params = Object.assign(config.params || {},qw)
+  if (useInfo?.cookie) qw.cookie = useInfo.cookie
+  config.params = Object.assign(config.params || {}, qw)
   return config
 })
 //响应拦截器

@@ -67,42 +67,48 @@ const {
   run: fn1,
   data: result,
   loading
-} = useRequest(() => getCode({ phone: useInfo.value.phone }), {
+} = useRequest(() => getCode(useInfo.value.phone), {
   manual: true
 })
-const { run: fn, data: res, loading: loadingLogin } = useRequest(() => login(useInfo.value))
+const {
+  run: fn,
+  data: res,
+  loading: loadingLogin
+} = useRequest(() => login(useInfo.value), {
+  manual: true
+})
 watch(result, () => {
   console.log(result.value)
 })
 watch(res, async () => {
-  const [error] = await to(localforage, setItem('useInfo', res.data))
+  const [error] = await to(localforage.setItem('useInfo', res.value.data))
   if (error) return showToast('')
   return router.replace(router.query.originPath)
 })
 // const fn3 = () => {
-  // login(useInfo.value)
-  //   .then((res) => {
-  //     console.log(res)
-  //     if (res.data.code == '200') {
-  //       localforage
-  //         .setItem('useInfo', res.data)
-  //         .then(() => {
-  //           console.log('保存成功')
-  //           XinxiStore.page(res.data.id)
-  //           router.push(route.query.originPath)
-  //         })
-  //         .catch(() => {
-  //           console.log('保存失败')
-  //         })
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     console.log(err)
-  //   })
-  // localforage.getItem('useInfo').then((res) => {
-  //   console.log(res.account.id)
-  //   XinxiStore.page(res.account.id)
-  //   router.push('/user')
-  // })
+// login(useInfo.value)
+//   .then((res) => {
+//     console.log(res)
+//     if (res.data.code == '200') {
+//       localforage
+//         .setItem('useInfo', res.data)
+//         .then(() => {
+//           console.log('保存成功')
+//           XinxiStore.page(res.data.id)
+//           router.push(route.query.originPath)
+//         })
+//         .catch(() => {
+//           console.log('保存失败')
+//         })
+//     }
+//   })
+//   .catch((err) => {
+//     console.log(err)
+//   })
+// localforage.getItem('useInfo').then((res) => {
+//   console.log(res.account.id)
+//   XinxiStore.page(res.account.id)
+//   router.push('/user')
+// })
 // }
 </script>
