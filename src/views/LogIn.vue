@@ -66,24 +66,29 @@ const fn1 = () => {
   })
 }
 const fn = () => {
-  login(useInfo.value)
-    .then((res) => {
-      console.log(res)
-      if (res.data.code == '200') {
-        localforage
-          .setItem('useInfo', res.data)
-          .then(() => {
-            console.log('保存成功')
-            XinxiStore.page(res.data.id)
-            router.push(route.query.originPath)
-          })
-          .catch(() => {
-            console.log('保存失败')
-          })
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  // login(useInfo.value)
+  //   .then((res) => {
+  //     console.log(res)
+  //     if (res.data.code == '200') {
+  //       localforage
+  //         .setItem('useInfo', res.data)
+  //         .then(() => {
+  //           console.log('保存成功')
+  //           XinxiStore.page(res.data.id)
+  //           router.push(route.query.originPath)
+  //         })
+  //         .catch(() => {
+  //           console.log('保存失败')
+  //         })
+  //     }
+  //   })
+  //   .catch((err) => {
+  //     console.log(err)
+  //   })
+  localforage.getItem('useInfo').then((res) => {
+    console.log(res.account.id)
+    XinxiStore.page(res.account.id)
+    router.push('/user')
+  })
 }
 </script>

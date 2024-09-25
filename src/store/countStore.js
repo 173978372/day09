@@ -46,6 +46,7 @@ export const useXinxiStore = defineStore('xinxi', {
   actions: {
     async page(id) {
       const [err, res] = await to(getStatus(id))
+
       if (res) {
         this.userLogin = res
       }
