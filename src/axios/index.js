@@ -1,6 +1,13 @@
 // import axios from 'axios'
 import request from '@/axios/aaa'
-export const getDate = request.get('/homepage/block/page')
+import to from 'await-to-js'
+export const getDate = async () => {
+  const [err, res] = await to(request.get('/homepage/block/page'))
+  if (err) {
+    console.log('请求出错')
+  }
+  return res
+}
 export const getSong = (id) => {
   return request.get('/playlist/track/all', {
     params: {

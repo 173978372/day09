@@ -3,12 +3,18 @@ import Home from '@/views/zong.vue'
 import Song from '@/components/gequ.vue'
 import LogIn from '@/views/LogIn.vue'
 import localforage from 'localforage'
+import HookPage from '@/views/hook/hookPage.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/hook',
+    name: 'hook',
+    component: HookPage
   },
   {
     path: '/login',
