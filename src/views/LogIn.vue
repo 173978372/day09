@@ -46,12 +46,15 @@
 </template>
 <script setup>
 import Input from '@/components/Input.vue'
-import { ref } from 'vue'
-import localforage from 'localforage'
+import localforage, { setItem } from 'localforage'
 import { login, getCode } from '@/axios'
 import { useRoute, useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useUserStore, useXinxiStore } from '@/store'
+import { watch, ref } from 'vue'
+import to from 'await-to-js'
+import { showToast } from 'vant'
+import { useRequest } from 'vue-request'
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
@@ -60,12 +63,23 @@ const useInfo = ref({
   phone: '',
   captcha: ''
 })
-const fn1 = () => {
-  getCode(useInfo.value.phone).then((res) => {
-    console.log(res)
-  })
-}
-const fn = () => {
+const {
+  run: fn1,
+  data: result,
+  loading
+} = useRequest(() => getCode({ phone: useInfo.value.phone }), {
+  manual: true
+})
+const { run: fn, data: res, loading: loadingLogin } = useRequest(() => login(useInfo.value))
+watch(result, () => {
+  console.log(result.value)
+})
+watch(res, async () => {
+  const [error] = await to(localforage, setItem('useInfo', res.data))
+  if (error) return showToast('')
+  return router.replace(router.query.originPath)
+})
+// const fn3 = () => {
   // login(useInfo.value)
   //   .then((res) => {
   //     console.log(res)
@@ -85,10 +99,10 @@ const fn = () => {
   //   .catch((err) => {
   //     console.log(err)
   //   })
-  localforage.getItem('useInfo').then((res) => {
-    console.log(res.account.id)
-    XinxiStore.page(res.account.id)
-    router.push('/user')
-  })
-}
+  // localforage.getItem('useInfo').then((res) => {
+  //   console.log(res.account.id)
+  //   XinxiStore.page(res.account.id)
+  //   router.push('/user')
+  // })
+// }
 </script>
