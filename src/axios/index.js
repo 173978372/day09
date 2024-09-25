@@ -36,6 +36,10 @@ export const getCode = (data) => {
     }
   })
 }
-export const getStatus = () => {
-  return request.get('/user/account')
+export const getStatus = (id) => {
+  return request.get('/user/detail', {
+    params: {
+      uid: id
+    }
+  })
 }

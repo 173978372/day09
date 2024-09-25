@@ -4,12 +4,18 @@ import Song from '@/components/gequ.vue'
 import LogIn from '@/views/LogIn.vue'
 import localforage from 'localforage'
 import HookPage from '@/views/hook/hookPage.vue'
+import UserPage from '@/views/children/user.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: UserPage
   },
   {
     path: '/hook',
